@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,9 @@ public class FileManagement {
         }
     }
 
-    public static List<String> readFile(File file){
+
+    public static List<String> readFile(String root){
+        File file = selectFile(root);
         ArrayList<String> lines = new ArrayList<>();
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -34,5 +38,14 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
         return lines;
+    }
+
+    private static File selectFile(String root){
+        JFileChooser chooser = new JFileChooser(root);
+        int returnVal = chooser.showOpenDialog(new Panel());
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile();
+        }
+        return null;
     }
 }

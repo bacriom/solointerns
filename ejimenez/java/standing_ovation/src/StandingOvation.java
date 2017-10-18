@@ -92,14 +92,10 @@ public class StandingOvation {
      * @param args
      */
     public static void main(String args[]){
-        JFileChooser chooser = new JFileChooser("in/");
-        int returnVal = chooser.showOpenDialog(new Panel());
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            StandingOvation ovation = new StandingOvation();
-            List<String> input = FileManagement.readFile(chooser.getSelectedFile());
-            String result = ovation.evaluateInput(input);
-            System.out.println(result);
-            FileManagement.saveFile(result,"src/output/result.txt");
-        }
+        StandingOvation ovation = new StandingOvation();
+        List<String> input = FileManagement.readFile("in/");
+        String result = ovation.evaluateInput(input);
+        System.out.println(result);
+        FileManagement.saveFile(result,"src/output/result.txt");
     }
 }
