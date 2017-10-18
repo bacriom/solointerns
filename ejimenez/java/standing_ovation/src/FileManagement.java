@@ -24,7 +24,11 @@ public class FileManagement {
         }
     }
 
-
+    /**
+     * Read the content on a text file
+     * @param root the path for start looking for the file, if "" starts on the users default root folder
+     * @return a string list with the lines of the file
+     */
     public static List<String> readFile(String root){
         File file = selectFile(root);
         ArrayList<String> lines = new ArrayList<>();
@@ -40,6 +44,11 @@ public class FileManagement {
         return lines;
     }
 
+    /**
+     * Let the user pick a file from his file system
+     * @param root the path for the FileChooser to start, if "" starts on the users default root folder
+     * @return the file selected by the user
+     */
     private static File selectFile(String root){
         JFileChooser chooser = new JFileChooser(root);
         int returnVal = chooser.showOpenDialog(new Panel());
