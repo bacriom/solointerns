@@ -30,12 +30,8 @@ public class SOvation {
                     line = reader.readLine();
                     String xcase[] = line.split(" ");
                     s= xcase[0];
-                    sMax=xcase[1];       
-                    
-                  
-                    result+="Case #"+(i+1)+": "+result(s,sMax)+"\n";
-                    
-                   // result+="Case #"+i+": "+evaluateCase(Integer.parseInt(xcase[0]),xcase[1])+"\n";
+                    sMax=xcase[1];                         
+                    result+="Case #"+(i+1)+": "+result(s,sMax)+"\n";                 
                 }
             }else{ // if t is off the limits then we put an error
                 System.out.println("Error: this input exceed the number of test cases accepted");
