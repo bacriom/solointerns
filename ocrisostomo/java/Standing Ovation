@@ -1,0 +1,77 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sovation;
+import java.io.*;
+/**
+ *
+ * @author ocrisostomo
+ */
+public class SOvation {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException {
+     String result = "";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("/home/ocrisostomo/Downloads/A-large-practice.in"));
+            String line = reader.readLine();
+            int t=0; // t = total cases
+            String s=null,sMax=null,sa=null;
+            if(line != null){
+                t = Integer.parseInt(line.trim());
+            }
+            if(t>=1 && t<=100){ //verify that the input is on the limit of the program
+                for(int i=0; i<t && line != null; i++){
+                   
+                    line = reader.readLine();
+                    String xcase[] = line.split(" ");
+                    s= xcase[0];
+                    sMax=xcase[1];       
+                    
+                  
+                    result+="Case #"+(i+1)+": "+result(s,sMax)+"\n";
+                    
+                   // result+="Case #"+i+": "+evaluateCase(Integer.parseInt(xcase[0]),xcase[1])+"\n";
+                }
+            }else{ // if t is off the limits then we put an error
+                System.out.println("Error: this input exceed the number of test cases accepted");
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.out.println(e.getMessage());
+        } 
+        
+        System.out.println(result);
+                
+  }
+    
+  public static int result(String s,String sMax){
+        int pClapping=0;       
+        int guests=0;        
+        if(Integer.valueOf(sMax.substring(0,1)) != 0){
+                
+                    pClapping+= Integer.valueOf(sMax.substring(0,1));                               
+            }
+                    
+            for(int j=0;j< sMax.length();j++){
+                
+                if(pClapping < Integer.valueOf(s)){
+                   
+                  
+                    if(pClapping > j){
+                        pClapping+= Integer.valueOf(sMax.substring(j,j+1));
+                    }else{
+                
+                        guests++;
+                        pClapping++;
+                    }
+                }                       
+            } 
+        return guests;
+  } 
+    
+}
+    
